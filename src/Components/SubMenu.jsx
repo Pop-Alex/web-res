@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import dataMenu from "../dataMenu";
 import { AnimatePresence, motion } from "framer-motion";
@@ -13,6 +13,14 @@ const SubMenu = () => {
   const [menuItems, setMenuItems] = useState(dataMenu);
   const [categories, setCategories] = useState(allCategories);
   const { addCart } = useContext(CartContext);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   const filterItems = (category) => {
     if (category === "all") {
